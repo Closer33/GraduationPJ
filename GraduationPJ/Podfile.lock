@@ -1,3 +1,19 @@
-PODFILE CHECKSUM: 13119bd4fd6a0a0c3f6dea0387ce184c2236403e
+PODS:
+  - AMap2DMap (5.6.0):
+    - AMapFoundation (~> 1.4)
+  - AMapFoundation (1.5.4)
+  - AMapSearch (6.1.1):
+    - AMapFoundation (~> 1.4)
+
+DEPENDENCIES:
+  - AMap2DMap
+  - AMapSearch
+
+SPEC CHECKSUMS:
+  AMap2DMap: cf0bfd6ae97951b55cc061903b814f924ba6c221
+  AMapFoundation: bff8688722e886feda4edd77f1443746ddd7e2e2
+  AMapSearch: 3dcbf85c403a2a0fe0eda5318caabc272b31f5e1
+
+PODFILE CHECKSUM: daa8ce6e6226e5910472dee277b3ff243fb01a4b
 
 COCOAPODS: 1.2.1
