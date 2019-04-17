@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
+#import <TencentOpenAPI/TencentOAuth.h>
 
 @interface AppDelegate ()
 
@@ -23,9 +24,11 @@
 
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"URLSchemes" message:@"打开了" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-    [alertView show];
-    return YES;
+    return [TencentOAuth HandleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [TencentOAuth HandleOpenURL:url];
 }
 
 
