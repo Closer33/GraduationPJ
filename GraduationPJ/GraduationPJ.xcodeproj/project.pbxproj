@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		040C70EC22674F4600613A33 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040C70EB22674F4600613A33 /* TencentOpenAPI.framework */; };
 		040C70EE22674F6A00613A33 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040C70ED22674F6A00613A33 /* SystemConfiguration.framework */; };
+		04A50DC2226823360089A064 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A50DC1226823360089A064 /* TencentOpenAPI.framework */; };
 		30CF0F7F226205F9000EF837 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CF0F7E226205F9000EF837 /* AppDelegate.m */; };
 		30CF0F82226205F9000EF837 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CF0F81226205F9000EF837 /* ViewController.m */; };
 		30CF0F85226205F9000EF837 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30CF0F83226205F9000EF837 /* Main.storyboard */; };
@@ -19,8 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		040C70EB22674F4600613A33 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		040C70ED22674F6A00613A33 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		04A50DC1226823360089A064 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		16FA8F86D48141B8901090EB /* Pods-GraduationPJ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraduationPJ.release.xcconfig"; path = "Pods/Target Support Files/Pods-GraduationPJ/Pods-GraduationPJ.release.xcconfig"; sourceTree = "<group>"; };
 		30CF0F7A226205F9000EF837 /* GraduationPJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraduationPJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30CF0F7D226205F9000EF837 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -42,14 +42,103 @@
 			buildActionMask = 2147483647;
 			files = (
 				040C70EE22674F6A00613A33 /* SystemConfiguration.framework in Frameworks */,
+				04A50DC2226823360089A064 /* TencentOpenAPI.framework in Frameworks */,
 				E125ADDF622106313975AF97 /* libPods-GraduationPJ.a in Frameworks */,
-				040C70EC22674F4600613A33 /* TencentOpenAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04A50DA422681F080089A064 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		04A50DB722681FF30089A064 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				04A50DB8226820AD0089A064 /* Base */,
+				04A50DC0226822240089A064 /* Main */,
+				04A50DA422681F080089A064 /* Home */,
+				04A50DBA226820E80089A064 /* Community */,
+				04A50DB9226820D20089A064 /* UserCenter */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		04A50DB8226820AD0089A064 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		04A50DB9226820D20089A064 /* UserCenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserCenter;
+			sourceTree = "<group>";
+		};
+		04A50DBA226820E80089A064 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
+		04A50DBB2268211B0089A064 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		04A50DBC226821420089A064 /* AppEntry */ = {
+			isa = PBXGroup;
+			children = (
+				30CF0F7D226205F9000EF837 /* AppDelegate.h */,
+				30CF0F7E226205F9000EF837 /* AppDelegate.m */,
+				30CF0F88226205FB000EF837 /* LaunchScreen.storyboard */,
+				30CF0F83226205F9000EF837 /* Main.storyboard */,
+				30CF0F8B226205FB000EF837 /* Info.plist */,
+				30CF0F8C226205FB000EF837 /* main.m */,
+			);
+			path = AppEntry;
+			sourceTree = "<group>";
+		};
+		04A50DBD2268217A0089A064 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				04A50DC1226823360089A064 /* TencentOpenAPI.framework */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		04A50DBE2268218A0089A064 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		04A50DBF226821A10089A064 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		04A50DC0226822240089A064 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		2D579507F543549CC2E453E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,16 +169,15 @@
 		30CF0F7C226205F9000EF837 /* GraduationPJ */ = {
 			isa = PBXGroup;
 			children = (
-				30CF0F7D226205F9000EF837 /* AppDelegate.h */,
-				30CF0F7E226205F9000EF837 /* AppDelegate.m */,
+				04A50DB722681FF30089A064 /* Features */,
+				04A50DBF226821A10089A064 /* Categories */,
+				04A50DBE2268218A0089A064 /* Helpers */,
+				04A50DBB2268211B0089A064 /* Vendors */,
+				04A50DBD2268217A0089A064 /* Config */,
+				04A50DBC226821420089A064 /* AppEntry */,
 				30CF0F80226205F9000EF837 /* ViewController.h */,
 				30CF0F81226205F9000EF837 /* ViewController.m */,
-				30CF0F83226205F9000EF837 /* Main.storyboard */,
 				30CF0F86226205FB000EF837 /* Assets.xcassets */,
-				040C70EB22674F4600613A33 /* TencentOpenAPI.framework */,
-				30CF0F88226205FB000EF837 /* LaunchScreen.storyboard */,
-				30CF0F8B226205FB000EF837 /* Info.plist */,
-				30CF0F8C226205FB000EF837 /* main.m */,
 			);
 			path = GraduationPJ;
 			sourceTree = "<group>";
@@ -372,8 +460,9 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GraduationPJ",
+					"$(PROJECT_DIR)/GraduationPJ/Config",
 				);
-				INFOPLIST_FILE = GraduationPJ/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GraduationPJ/AppEntry/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -394,8 +483,9 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GraduationPJ",
+					"$(PROJECT_DIR)/GraduationPJ/Config",
 				);
-				INFOPLIST_FILE = GraduationPJ/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GraduationPJ/AppEntry/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
