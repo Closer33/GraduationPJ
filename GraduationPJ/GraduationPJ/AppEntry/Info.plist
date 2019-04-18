@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>定位授权</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>定位授权</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>定位授权</string>
+	<key>NSMotionUsageDescription</key>
+	<string>记步权限</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>visit &quot;Health&quot; and read the data</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>visit &quot;Health&quot; and read the data</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -54,10 +66,9 @@
 	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
+		<string>healthkit</string>
 		<string>armv7</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>

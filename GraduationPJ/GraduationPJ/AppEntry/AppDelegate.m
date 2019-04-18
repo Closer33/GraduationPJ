@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <TencentOpenAPI/TencentOAuth.h>
+#import "QPMainViewController.h"
+#import "QPAuthoritySettingViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,7 +20,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // 高德地图注册
     [AMapServices sharedServices].apiKey = @"d665c3cfbed331888598eae592ca3e1b";
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    UIViewController *rootVC = nil;
+    if (![[NSUserDefaults standardUserDefaults] valueForKey:@"isNotFirstLaunch"]) {
+        rootVC = [[QPAuthoritySettingViewController alloc] init];
+    } else {
+        rootVC = [[QPMainViewController alloc] init];
+    }
+    self.window.rootViewController = rootVC;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
