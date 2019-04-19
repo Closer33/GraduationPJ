@@ -20,9 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16c-Oj-dUF">
-                    <rect key="frame" x="170" y="566" width="34" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16c-Oj-dUF">
+                    <rect key="frame" x="170.5" y="587" width="34" height="30"/>
                     <state key="normal" title="login"/>
                     <connections>
                         <action selector="loginButtonClick:" destination="-1" eventType="touchUpInside" id="Yle-yR-Tv3"/>
@@ -30,6 +29,10 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="0.42315801818263521" blue="0.25796208901404993" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="16c-Oj-dUF" secondAttribute="bottom" constant="50" id="U9T-uE-um0"/>
+                <constraint firstItem="16c-Oj-dUF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="iZm-Tp-bS0"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>
     </objects>
