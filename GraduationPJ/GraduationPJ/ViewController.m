@@ -26,13 +26,6 @@
 //    [self.view addSubview:_mapView];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"1108733927" andDelegate:self];
-    _tencentOAuth.authShareType = AuthShareType_TIM;
-    NSArray *permissions = [NSArray arrayWithObjects:@"get_user_info",@"get_simple_userinfo", @"add_t", nil];
-    [_tencentOAuth authorize:permissions];
-}
-
 - (void)tencentDidLogin {
     NSLog(@"登录成功");
 }

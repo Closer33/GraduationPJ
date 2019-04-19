@@ -97,7 +97,7 @@ typedef NS_ENUM(NSUInteger, QPAuthoritySettingType) {
 
 - (void)dealloc
 {
-    NSLog(@"delloc");
+    NSLog(@"QPAuthoritySettingViewController");
 }
 
 @end

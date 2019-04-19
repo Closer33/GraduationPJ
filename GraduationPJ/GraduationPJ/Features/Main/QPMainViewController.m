@@ -7,6 +7,9 @@
 //
 
 #import "QPMainViewController.h"
+#import "QPLoginViewController.h"
+#import "QPTabBarController.h"
+#import "QPAccount.h"
 
 @interface QPMainViewController ()
 
@@ -16,22 +19,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor redColor];
-    if([[NSUserDefaults standardUserDefaults] valueForKey:@"isFirstLaunch"]) {
-        
+    UIViewController *childVC = nil;
+    if ([QPAccount isLogin]) {
+        childVC = [[UIStoryboard storyboardWithName:@"QPTabBarController" bundle:nil] instantiateInitialViewController];
+    } else {
+        childVC = [[QPLoginViewController alloc] init];
     }
+    [self addChildViewController:childVC];
+    childVC.view.frame = self.view.bounds;
+    [self.view addSubview:childVC.view];
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
