@@ -4,16 +4,22 @@ PODS:
   - AMapFoundation (1.5.4)
   - AMapSearch (6.1.1):
     - AMapFoundation (~> 1.4)
+  - MJExtension (3.0.16)
+  - SocketRocket (0.5.1)
 
 DEPENDENCIES:
   - AMap3DMap
   - AMapSearch
+  - MJExtension
+  - SocketRocket
 
 SPEC CHECKSUMS:
   AMap3DMap: 7bb992e6bfb99e34e6c7a368958dde9d743a23f1
   AMapFoundation: bff8688722e886feda4edd77f1443746ddd7e2e2
   AMapSearch: 3dcbf85c403a2a0fe0eda5318caabc272b31f5e1
+  MJExtension: 54dbbf6ee728f1a88e9aad904353d007831c7847
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
 
-PODFILE CHECKSUM: f1f6002f95b7863c007d7a59b4238dad80b5e3a3
+PODFILE CHECKSUM: 1c7b2d48616f7148f9994f1e4afc8ed944f9d41d
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1

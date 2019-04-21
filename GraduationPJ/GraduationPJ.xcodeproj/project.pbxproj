@@ -24,10 +24,13 @@
 		04E066DC2269CCB9003C6D10 /* QPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E066DB2269CCB9003C6D10 /* QPHomeViewController.m */; };
 		04E066E22269D508003C6D10 /* QPMapViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E066E12269D508003C6D10 /* QPMapViewCell.m */; };
 		04E066E62269DB40003C6D10 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E066E52269DB40003C6D10 /* UIView+Frame.m */; };
+		3090BE4B226B1D0800A6B8FC /* QPMapViewCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3090BE4A226B1D0800A6B8FC /* QPMapViewCellModel.m */; };
+		3090BE4D226B22A700A6B8FC /* track.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3090BE4C226B22A700A6B8FC /* track.plist */; };
 		30CF0F7F226205F9000EF837 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CF0F7E226205F9000EF837 /* AppDelegate.m */; };
 		30CF0F87226205FB000EF837 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30CF0F86226205FB000EF837 /* Assets.xcassets */; };
 		30CF0F8A226205FB000EF837 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30CF0F88226205FB000EF837 /* LaunchScreen.storyboard */; };
 		30CF0F8D226205FB000EF837 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CF0F8C226205FB000EF837 /* main.m */; };
+		30D55A03226CB01F0070CE01 /* QPSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D55A02226CB01F0070CE01 /* QPSocketManager.m */; };
 		E125ADDF622106313975AF97 /* libPods-GraduationPJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA847C48C85EBD28AD3DA45 /* libPods-GraduationPJ.a */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +65,9 @@
 		04E066E52269DB40003C6D10 /* UIView+Frame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		04E066E72269DD14003C6D10 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		16FA8F86D48141B8901090EB /* Pods-GraduationPJ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraduationPJ.release.xcconfig"; path = "Pods/Target Support Files/Pods-GraduationPJ/Pods-GraduationPJ.release.xcconfig"; sourceTree = "<group>"; };
+		3090BE49226B1D0800A6B8FC /* QPMapViewCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QPMapViewCellModel.h; sourceTree = "<group>"; };
+		3090BE4A226B1D0800A6B8FC /* QPMapViewCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QPMapViewCellModel.m; sourceTree = "<group>"; };
+		3090BE4C226B22A700A6B8FC /* track.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = track.plist; sourceTree = "<group>"; };
 		30CF0F7A226205F9000EF837 /* GraduationPJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraduationPJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30CF0F7D226205F9000EF837 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		30CF0F7E226205F9000EF837 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -69,6 +75,8 @@
 		30CF0F89226205FB000EF837 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30CF0F8B226205FB000EF837 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30CF0F8C226205FB000EF837 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		30D55A01226CB01F0070CE01 /* QPSocketManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QPSocketManager.h; sourceTree = "<group>"; };
+		30D55A02226CB01F0070CE01 /* QPSocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QPSocketManager.m; sourceTree = "<group>"; };
 		9AA847C48C85EBD28AD3DA45 /* libPods-GraduationPJ.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GraduationPJ.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3389279DB92CEE0AB001C1 /* Pods-GraduationPJ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraduationPJ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GraduationPJ/Pods-GraduationPJ.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,7 +100,7 @@
 		04A50DA422681F080089A064 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				04E066DF2269D20A003C6D10 /* Model */,
+				3090BE48226B1CE100A6B8FC /* Model */,
 				04E066DE2269D1FE003C6D10 /* View */,
 				04E066DD2269D1E9003C6D10 /* Controller */,
 			);
@@ -155,6 +163,7 @@
 		04A50DBD2268217A0089A064 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				3090BE4C226B22A700A6B8FC /* track.plist */,
 				04E066E72269DD14003C6D10 /* PrefixHeader.pch */,
 			);
 			path = Config;
@@ -169,6 +178,8 @@
 				04A50DF1226874880089A064 /* QPPedometerManager.m */,
 				043728B522699B6800892B38 /* QPAccount.h */,
 				043728B622699B6800892B38 /* QPAccount.m */,
+				30D55A01226CB01F0070CE01 /* QPSocketManager.h */,
+				30D55A02226CB01F0070CE01 /* QPSocketManager.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -218,13 +229,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		04E066DF2269D20A003C6D10 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		2D579507F543549CC2E453E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +238,15 @@
 				9AA847C48C85EBD28AD3DA45 /* libPods-GraduationPJ.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3090BE48226B1CE100A6B8FC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3090BE49226B1D0800A6B8FC /* QPMapViewCellModel.h */,
+				3090BE4A226B1D0800A6B8FC /* QPMapViewCellModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		30CF0F71226205F9000EF837 = {
@@ -345,6 +358,7 @@
 			files = (
 				30CF0F8A226205FB000EF837 /* LaunchScreen.storyboard in Resources */,
 				043728BE2269AC4600892B38 /* QPTabBarController.storyboard in Resources */,
+				3090BE4D226B22A700A6B8FC /* track.plist in Resources */,
 				30CF0F87226205FB000EF837 /* Assets.xcassets in Resources */,
 				04A50DD322684F9E0089A064 /* QPAuthoritySettingViewController.xib in Resources */,
 				0466B7D6226965C000094561 /* QPLoginViewController.xib in Resources */,
@@ -381,7 +395,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		890E7AE9870C51CFCF3ADE84 /* [CP] Copy Pods Resources */ = {
@@ -411,7 +425,9 @@
 				04E066DC2269CCB9003C6D10 /* QPHomeViewController.m in Sources */,
 				04A50DC8226827ED0089A064 /* QPMainViewController.m in Sources */,
 				04E066E62269DB40003C6D10 /* UIView+Frame.m in Sources */,
+				30D55A03226CB01F0070CE01 /* QPSocketManager.m in Sources */,
 				04A50DD222684F9E0089A064 /* QPAuthoritySettingViewController.m in Sources */,
+				3090BE4B226B1D0800A6B8FC /* QPMapViewCellModel.m in Sources */,
 				0466B7D5226965C000094561 /* QPLoginViewController.m in Sources */,
 				043728B722699B6800892B38 /* QPAccount.m in Sources */,
 				04E066E22269D508003C6D10 /* QPMapViewCell.m in Sources */,

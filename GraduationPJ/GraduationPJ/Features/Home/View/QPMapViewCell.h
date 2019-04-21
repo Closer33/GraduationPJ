@@ -10,7 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class QPMapViewCellModel;
 @interface QPMapViewCell : UICollectionViewCell
+
+- (void)setModel:(QPMapViewCellModel *)model;
 
 @end
 

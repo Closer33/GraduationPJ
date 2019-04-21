@@ -51,6 +51,10 @@
     [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"userInfo"];
 }
 
++ (NSDictionary *)getUserInfo {
+    return [[NSUserDefaults standardUserDefaults] valueForKey:@"userInfo"];
+}
+
 + (BOOL)isLogin {
     QPAccessInfo *accessInfo = [NSKeyedUnarchiver unarchiveObjectWithFile:[self getFilePathWitName:@"accessInfo"]];
     if (accessInfo && accessInfo.accessToken && [self isExpirationWithDate:accessInfo.expirationDate]) {
