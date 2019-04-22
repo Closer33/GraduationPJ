@@ -12,7 +12,7 @@
 
 + (instancetype)shareInstance;
 
-+ (void)connectWithProtocol:(NSString *)protocol;
+- (void)connectWithProtocol:(NSString *)protocol;
 - (void)close;
 
 @end

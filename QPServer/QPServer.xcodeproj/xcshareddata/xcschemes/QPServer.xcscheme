@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "WebSocketsServer::WebSocketsServer"
-               BuildableName = "WebSocketsServer"
-               BlueprintName = "WebSocketsServer"
-               ReferencedContainer = "container:WebSocketsServer.xcodeproj">
+               BlueprintIdentifier = "QPServer::QPServer"
+               BuildableName = "QPServer"
+               BlueprintName = "QPServer"
+               ReferencedContainer = "container:QPServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "QPServer::QPServerTests"
+               BuildableName = "QPServerTests.xctest"
+               BlueprintName = "QPServerTests"
+               ReferencedContainer = "container:QPServer.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <AdditionalOptions>
       </AdditionalOptions>
@@ -46,10 +56,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "WebSocketsServer::WebSocketsServer"
-            BuildableName = "WebSocketsServer"
-            BlueprintName = "WebSocketsServer"
-            ReferencedContainer = "container:WebSocketsServer.xcodeproj">
+            BlueprintIdentifier = "QPServer::QPServer"
+            BuildableName = "QPServer"
+            BlueprintName = "QPServer"
+            ReferencedContainer = "container:QPServer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

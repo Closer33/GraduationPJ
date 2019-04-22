@@ -1,1 +1,3 @@
-GraduationPJ/Pods/
+GraduationPJ/Pods
+QPServer/.build
+WebSocketsServer/.build

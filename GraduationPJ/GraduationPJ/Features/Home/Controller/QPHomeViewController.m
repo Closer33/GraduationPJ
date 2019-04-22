@@ -11,6 +11,9 @@
 #import "QPMapViewCellModel.h"
 #import <MJExtension.h>
 
+#import "QPAccount.h"
+#import "QPNetworkManager.h"
+
 @interface QPHomeViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -29,6 +32,13 @@ static NSString * const kCollectionViewReuseId = @"QPMapViewCell";
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupUI];
     [self loadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    // 将用户信息发送到服务器
+    [[QPNetworkManager shareInstance] GET:@"http://localhost:8181/api/v1/oauth" parameters:[QPAccount getUserInfo] progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@", responseObject);
+    } failure:nil];
 }
 
 - (void)setupUI {

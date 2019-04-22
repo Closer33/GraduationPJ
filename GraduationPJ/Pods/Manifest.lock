@@ -1,4 +1,19 @@
 PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
   - AMap3DMap (6.7.0):
     - AMapFoundation (~> 1.5)
   - AMapFoundation (1.5.4)
@@ -8,18 +23,20 @@ PODS:
   - SocketRocket (0.5.1)
 
 DEPENDENCIES:
+  - AFNetworking
   - AMap3DMap
   - AMapSearch
   - MJExtension
   - SocketRocket
 
 SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   AMap3DMap: 7bb992e6bfb99e34e6c7a368958dde9d743a23f1
   AMapFoundation: bff8688722e886feda4edd77f1443746ddd7e2e2
   AMapSearch: 3dcbf85c403a2a0fe0eda5318caabc272b31f5e1
   MJExtension: 54dbbf6ee728f1a88e9aad904353d007831c7847
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
 
-PODFILE CHECKSUM: 1c7b2d48616f7148f9994f1e4afc8ed944f9d41d
+PODFILE CHECKSUM: b8fd0ab06256649e98993ab7350cbdbff7f3523b
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.2.0

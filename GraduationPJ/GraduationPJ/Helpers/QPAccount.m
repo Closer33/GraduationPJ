@@ -48,7 +48,12 @@
 }
 
 + (void)saveUserInfoWithDic:(NSDictionary *)dic {
-    [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"userInfo"];
+    QPAccessInfo *accessInfo = [NSKeyedUnarchiver unarchiveObjectWithFile:[self getFilePathWitName:@"accessInfo"]];
+    NSMutableDictionary *mDic = [NSMutableDictionary dictionary];
+    mDic[@"nickname"] = dic[@"nickname"];
+    mDic[@"figureurl"] = dic[@"figureurl_2"];
+    mDic[@"openid"] = accessInfo.openId;
+    [[NSUserDefaults standardUserDefaults] setObject:[mDic copy] forKey:@"userInfo"];
 }
 
 + (NSDictionary *)getUserInfo {

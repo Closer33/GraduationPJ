@@ -9,6 +9,7 @@ target 'GraduationPJ' do
    pod 'AMapSearch' #搜索功能
    pod 'MJExtension'
    pod 'SocketRocket'
+   pod 'AFNetworking'
   # Pods for GraduationPJ
 
 end

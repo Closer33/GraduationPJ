@@ -10,6 +10,7 @@
 #import "QPMainViewController.h"
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "QPAccount.h"
+#import "QPNetworkManager.h"
 
 @interface QPLoginViewController ()<TencentSessionDelegate>
 
@@ -51,6 +52,11 @@
     if (!response.errorMsg) {
         [QPAccount saveUserInfoWithDic:response.jsonResponse];
         [UIApplication sharedApplication].keyWindow.rootViewController = [[QPMainViewController alloc] init];
+        
+        // 将用户信息发送到服务器
+        [[QPNetworkManager shareInstance] GET:@"http://localhost:8181/api/v1/oauth" parameters:response.jsonResponse progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+        } failure:nil];
     }
 }
 
