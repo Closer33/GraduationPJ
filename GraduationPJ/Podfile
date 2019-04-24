@@ -10,6 +10,8 @@ target 'GraduationPJ' do
    pod 'MJExtension'
    pod 'SocketRocket'
    pod 'AFNetworking'
+   pod 'SDWebImage'
+   pod 'Masonry'
   # Pods for GraduationPJ
 
 end

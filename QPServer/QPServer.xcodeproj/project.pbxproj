@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		046D5A80226EC45D0096BB8E /* QPDataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D5A7E226EC27E0096BB8E /* QPDataBaseManager.swift */; };
+		046D5A84226F23F60096BB8E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 046D5A82226F23B40096BB8E /* Foundation.framework */; };
 		OBJ_394 /* a_.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_120 /* a_.c */; };
 		OBJ_395 /* aes_.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_121 /* aes_.c */; };
 		OBJ_396 /* ameth_lib.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_122 /* ameth_lib.c */; };
@@ -760,7 +762,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		"COpenSSL::COpenSSL::Product" /* COpenSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = COpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		046D5A7E226EC27E0096BB8E /* QPDataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QPDataBaseManager.swift; sourceTree = "<group>"; };
+		046D5A82226F23B40096BB8E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		"COpenSSL::COpenSSL::Product" /* COpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = COpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* QPServerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QPServerHandler.swift; sourceTree = "<group>"; };
 		OBJ_100 /* Net.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
 		OBJ_101 /* NetAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetAddress.swift; sourceTree = "<group>"; };
@@ -1109,7 +1113,7 @@
 		"PerfectThread::PerfectThread::Product" /* PerfectThread.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PerfectThread.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"PerfectWebSockets::PerfectWebSockets::Product" /* PerfectWebSockets.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PerfectWebSockets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"QPServer::QPServer::Product" /* QPServer */ = {isa = PBXFileReference; lastKnownFileType = text; path = QPServer; sourceTree = BUILT_PRODUCTS_DIR; };
-		"QPServer::QPServerTests::Product" /* QPServerTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = QPServerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"QPServer::QPServerTests::Product" /* QPServerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = QPServerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1221,6 +1225,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
+				046D5A84226F23F60096BB8E /* Foundation.framework in Frameworks */,
 				OBJ_890 /* PerfectMongoDB.framework in Frameworks */,
 				OBJ_891 /* PerfectWebSockets.framework in Frameworks */,
 				OBJ_892 /* PerfectHTTPServer.framework in Frameworks */,
@@ -1256,6 +1261,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		046D5A81226F23B40096BB8E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				046D5A82226F23B40096BB8E /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		OBJ_108 /* PerfectCrypto 3.1.2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1755,7 +1768,7 @@
 			path = HTTP2;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -1763,8 +1776,8 @@
 				OBJ_12 /* Tests */,
 				OBJ_16 /* Dependencies */,
 				OBJ_375 /* Products */,
+				046D5A81226F23B40096BB8E /* Frameworks */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_60 /* PerfectCZlib 0.0.4 */ = {
@@ -1824,8 +1837,9 @@
 		OBJ_8 /* QPServer */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_10 /* QPServerHandler.swift */,
 				OBJ_11 /* main.swift */,
+				OBJ_10 /* QPServerHandler.swift */,
+				046D5A7E226EC27E0096BB8E /* QPDataBaseManager.swift */,
 			);
 			name = QPServer;
 			path = Sources/QPServer;
@@ -2304,6 +2318,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 9999;
+				TargetAttributes = {
+					"COpenSSL::COpenSSL" = {
+						LastSwiftMigration = 1010;
+					};
+				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "QPServer" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2312,7 +2331,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_375 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2821,6 +2840,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_887 /* QPServerHandler.swift in Sources */,
+				046D5A80226EC45D0096BB8E /* QPDataBaseManager.swift in Sources */,
 				OBJ_888 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3132,7 +3152,8 @@
 		OBJ_391 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEFINES_MODULE = NO;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3152,6 +3173,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGET_NAME = COpenSSL;
 			};
 			name = Debug;
@@ -3159,7 +3182,8 @@
 		OBJ_392 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEFINES_MODULE = NO;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3179,6 +3203,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.2;
 				TARGET_NAME = COpenSSL;
 			};
 			name = Release;

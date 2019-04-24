@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)saveUserInfoWithDic:(NSDictionary *)dic;
 + (BOOL)isLogin;
 + (NSDictionary *)getUserInfo;
++ (NSString *)getOpenId;
 
 @end
 

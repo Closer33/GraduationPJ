@@ -54,8 +54,8 @@
         [UIApplication sharedApplication].keyWindow.rootViewController = [[QPMainViewController alloc] init];
         
         // 将用户信息发送到服务器
-        [[QPNetworkManager shareInstance] GET:@"http://localhost:8181/api/v1/oauth" parameters:response.jsonResponse progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            
+        [[QPNetworkManager shareInstance] GET:@"http://localhost:8181/api/v1/oauth" parameters:[QPAccount getUserInfo] progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSLog(@"%@", responseObject);
         } failure:nil];
     }
 }

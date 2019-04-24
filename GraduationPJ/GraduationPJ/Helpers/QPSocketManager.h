@@ -8,11 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^successBlock)(BOOL);
+typedef void(^messageBlock)(NSDictionary *);
+
 @interface QPSocketManager : NSObject
+
+@property (nonatomic, copy) successBlock successBlock;
+@property (nonatomic, copy) messageBlock messageBlock;
 
 + (instancetype)shareInstance;
 
-- (void)connectWithProtocol:(NSString *)protocol;
+- (void)connectWithProtocol:(NSArray *)protocols;
+- (void)sendMessage:(NSString *)message;
 - (void)close;
 
 @end

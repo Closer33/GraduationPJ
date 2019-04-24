@@ -8,8 +8,8 @@
 
 #import "QPMainViewController.h"
 #import "QPLoginViewController.h"
-#import "QPTabBarController.h"
 #import "QPAccount.h"
+#import "QPHomeViewController.h"
 
 @interface QPMainViewController ()
 
@@ -21,7 +21,7 @@
     [super viewDidLoad];
     UIViewController *childVC = nil;
     if ([QPAccount isLogin]) {
-        childVC = [[UIStoryboard storyboardWithName:@"QPTabBarController" bundle:nil] instantiateInitialViewController];
+        childVC = [[UINavigationController alloc] initWithRootViewController:[[QPHomeViewController alloc] init]];
     } else {
         childVC = [[QPLoginViewController alloc] init];
     }

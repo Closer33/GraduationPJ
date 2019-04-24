@@ -51,13 +51,17 @@
     QPAccessInfo *accessInfo = [NSKeyedUnarchiver unarchiveObjectWithFile:[self getFilePathWitName:@"accessInfo"]];
     NSMutableDictionary *mDic = [NSMutableDictionary dictionary];
     mDic[@"nickname"] = dic[@"nickname"];
-    mDic[@"figureurl"] = dic[@"figureurl_2"];
+    mDic[@"figureurl"] = dic[@"figureurl_qq"];
     mDic[@"openid"] = accessInfo.openId;
     [[NSUserDefaults standardUserDefaults] setObject:[mDic copy] forKey:@"userInfo"];
 }
 
 + (NSDictionary *)getUserInfo {
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"userInfo"];
+}
+
++ (NSString *)getOpenId {
+    return [self getUserInfo][@"openid"];
 }
 
 + (BOOL)isLogin {
