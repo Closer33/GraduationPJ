@@ -15,6 +15,7 @@
 #import "QPNetworkManager.h"
 #import "QPInputRoomIdView.h"
 #import "QPRoomView.h"
+#import "UIViewController+AlertView.h"
 
 @interface QPHomeViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -74,8 +75,7 @@ static NSString * const kCollectionViewReuseId = @"QPMapViewCell";
 - (void)handleSocket {
     [QPSocketManager shareInstance].successBlock = ^(BOOL isScuuess) {
         if (!isScuuess) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"连接失败" message:@"服务器目前不可用，请联系管理员" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alertView show];
+            [self showAlertViewWithType:QPAlertViewTypeConnectFiled];
         }
     };
     weakify(self);
@@ -103,8 +103,18 @@ static NSString * const kCollectionViewReuseId = @"QPMapViewCell";
         };
         // 加入房间失败 房间号错误
         if ([dict[@"code"] intValue] == 3) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"加入房间失败" message:@"请输入正确的房间号" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alertView show];
+            [self showAlertViewWithType:QPAlertViewTypeRoomIdError];
+        }
+        // 对手退出房间
+        if ([dict[@"code"] intValue] == 4) {
+            [self.roomView loadInitDataWithRoomId:dict[@"result"][@"roomId"]];
+        }
+    };
+    [QPSocketManager shareInstance].closeBlock = ^{
+        if (self.roomView) {
+            [self.roomView removeFromWindow];
+            self.roomView = nil;
+            [self showAlertViewWithType:QPAlertViewTypeRoomDisappear];
         }
     };
 }

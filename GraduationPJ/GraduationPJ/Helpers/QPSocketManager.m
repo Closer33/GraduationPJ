@@ -80,6 +80,9 @@ typedef void(^isSuccessBlock)(BOOL);
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
     NSLog(@"webServer close");
+    if (self.closeBlock) {
+        self.closeBlock();
+    }
     [self close];
 }
 
@@ -93,7 +96,7 @@ typedef void(^isSuccessBlock)(BOOL);
                                                         options:NSJSONReadingMutableContainers
                                                           error:&err];
     if(err) {
-        NSLog(@"json解析失败：%@",err);
+        NSLog(@"json解析失败：%@",jsonString);
         return nil;
     }
     return dic;

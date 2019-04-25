@@ -10,11 +10,13 @@
 
 typedef void(^successBlock)(BOOL);
 typedef void(^messageBlock)(NSDictionary *);
+typedef void(^closeBlock)(void);
 
 @interface QPSocketManager : NSObject
 
 @property (nonatomic, copy) successBlock successBlock;
 @property (nonatomic, copy) messageBlock messageBlock;
+@property (nonatomic, copy) closeBlock closeBlock;
 
 + (instancetype)shareInstance;
 

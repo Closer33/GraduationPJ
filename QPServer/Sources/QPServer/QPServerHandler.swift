@@ -37,7 +37,7 @@ func makeRoutes() -> Routes {
             if protocols.first! == "create" {
                 var roomId = ""
                 repeat {
-                    roomId = "\(arc4random_uniform(10))" + "\(arc4random_uniform(10))" + "\(arc4random_uniform(10))" + "\(arc4random_uniform(10))"
+                    roomId = "\(arc4random_uniform(8999) + 1000)"
                 } while QPWebSocketManager.shareInstance.isRoomExist(rommId: roomId)
                 handle.roomId = roomId
             } else {
@@ -60,7 +60,14 @@ class QPWebSocketHandle: WebSocketSessionHandler {
     
     var isFirstEstablished = true
     
-    var isLaunch = false
+    var isLaunch: Bool {
+        if QPWebSocketManager.shareInstance.roomSocketCount(roomId: roomId!) == 2 {
+            return true
+        }
+        return false
+    }
+    
+    var isOwner = false
     
     func handleSession(request: HTTPRequest, socket: WebSocket) {
         
@@ -70,18 +77,33 @@ class QPWebSocketHandle: WebSocketSessionHandler {
         
         if isFirstEstablished {
             QPWebSocketManager.shareInstance.createOrJoinRoom(roomId: roomId, socket: socket, socketId: socketId)
+            if QPWebSocketManager.shareInstance.roomSocketCount(roomId: roomId) == 1 {
+                isOwner = true
+            }
             isFirstEstablished = false
         }
         
         socket.readStringMessage { (string, op, fin) in
             
             guard let string = string else {
-                print("房间\(roomId)关闭")
-                QPWebSocketManager.shareInstance.exitRoom(roomId: roomId)
+                if self.isOwner {
+                    print("房主--房间\(roomId)关闭")
+                    if self.isLaunch {
+                        print("房主--房主告诉对手房间\(roomId)关闭")
+                        QPWebSocketManager.shareInstance.getAnotherSocket(roomId: roomId, socketId: socketId)?.close()
+                    }
+                    QPWebSocketManager.shareInstance.exitRoom(roomId: roomId, socketId: nil)
+                } else {
+                    QPWebSocketManager.shareInstance.getAnotherSocket(roomId: roomId, socketId: socketId)!.sendStringMessage(string: "{\"code\": 4, \"result\": {\"roomId\": \(roomId)}}", final: true, completion: {
+                        QPWebSocketManager.shareInstance.exitRoom(roomId: roomId, socketId: socketId)
+                    })
+                    print("对手--告诉房主对手退出了房间\(roomId)")
+                }
                 socket.close()
                 return
             }
             
+            // 房主逻辑，告诉客户端创建房间成功
             if string == "create" {
                 print("\(socketId)创建房间\(roomId)成功")
                 let dic = ["code": 1, "result": ["msg": "wait for joining", "roomId": roomId]] as [String : Any];
@@ -89,36 +111,33 @@ class QPWebSocketHandle: WebSocketSessionHandler {
                 socket.sendStringMessage(string: string, final: true, completion: {
                     self.handleSession(request: request, socket: socket)
                 })
+                return
             }
             
+            // 对手逻辑，告诉两个客户端对手已经加入房间
             if string == "join" {
                 if QPWebSocketManager.shareInstance.roomSocketCount(roomId: roomId) == 2 {
-                    print("\(socketId)成功加入房间\(roomId)")
+                    print("对手--\(socketId)成功加入房间\(roomId)")
                     let room = QPWebSocketManager.shareInstance.getRoom(roomId: roomId)!
-                    let firstSocket = QPWebSocketManager.shareInstance.getSocket(socketId: room[0])!;
-                    let secondSocket = QPWebSocketManager.shareInstance.getSocket(socketId: room[1])!;
+                    let ownerSocket = QPWebSocketManager.shareInstance.getSocket(socketId: room[0])!;
                     let joinString = "{\"code\": 2, \"result\": {\"roomId\": \(roomId), \"userInfos\": [\(getUserInfo(openId: room[0])), \(getUserInfo(openId: room[1]))]}}"
-                    firstSocket.sendStringMessage(string: joinString, final: true, completion: {
+                    ownerSocket.sendStringMessage(string: joinString, final: true, completion: {
+                    })
+                    socket.sendStringMessage(string: joinString, final: true, completion: {
                         self.handleSession(request: request, socket: socket)
                     })
-                    secondSocket.sendStringMessage(string: joinString, final: true, completion: {
-                        self.handleSession(request: request, socket: socket)
-                    })
-                    self.isLaunch = true
                 } else {
-                    print("房间\(roomId)关闭")
-                    QPWebSocketManager.shareInstance.exitRoom(roomId: roomId)
+                    print("对手--房间\(roomId)关闭")
                     socket.sendStringMessage(string: "{\"code\": 3, \"result\": \"roomId error\"}", final: true, completion: {
                         socket.close()
                     })
+                    QPWebSocketManager.shareInstance.exitRoom(roomId: roomId, socketId: nil)
                 }
+                return
             }
             
             if self.isLaunch {
                 print("房间\(roomId)开始游戏")
-                QPWebSocketManager.shareInstance.getAnotherSocket(roomId: roomId, socketId: socketId)?.sendStringMessage(string: "{\"type\": 003, \"result\": \(string)}", final: true, completion: {
-                    self.handleSession(request: request, socket: socket)
-                })
             }
         }
     }
@@ -156,13 +175,20 @@ class QPWebSocketManager {
         roomDic[roomId] = room
     }
     
-    public func exitRoom(roomId: String) {
-    
-        if isRoomExist(rommId: roomId) {
-            for socketId in roomDic[roomId]! {
-                socketDic[socketId] = nil
+    public func exitRoom(roomId: String, socketId: String?) {
+        
+        guard let socketId = socketId else {
+            if isRoomExist(rommId: roomId) {
+                for socketId in roomDic[roomId]! {
+                    socketDic[socketId] = nil
+                }
+                roomDic[roomId] = nil
             }
-            roomDic[roomId] = nil
+            return
+        }
+        if isRoomExist(rommId: roomId) {
+            socketDic[socketId] = nil
+            roomDic[roomId]?.removeLast()
         }
     }
     
@@ -179,7 +205,7 @@ class QPWebSocketManager {
         
         for otherSocket in room {
             if otherSocket != socketId {
-                return socketDic[socketId]
+                return socketDic[otherSocket]
             }
         }
         

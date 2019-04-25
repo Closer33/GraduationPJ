@@ -64,6 +64,11 @@
     NSDictionary *userDic = [QPAccount getUserInfo];
     [self.ownerImageView sd_setImageWithURL:userDic[@"figureurl"]];
     self.ownerLabel.text = userDic[@"nickname"];
+    
+    self.joinnerImagView.image = nil;
+    self.joinnerLabel.text = nil;
+    self.startBuuton.enabled = NO;
+    [self.startBuuton setTitle:@"等待对手加入..." forState:UIControlStateNormal];
 }
 
 - (void)loadDataWithDic:(NSDictionary *)dic isOwner:(BOOL)isOwner {
@@ -79,7 +84,6 @@
         self.ownerLabel.text = [model.userInfos[0] nickname];
         [self.startBuuton setTitle:@"等待房主开始开始游戏" forState:UIControlStateNormal];
     }
-    NSLog(@"123");
 }
 
 @end
