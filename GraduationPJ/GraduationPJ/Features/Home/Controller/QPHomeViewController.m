@@ -16,6 +16,7 @@
 #import "QPInputRoomIdView.h"
 #import "QPRoomView.h"
 #import "UIViewController+AlertView.h"
+#import "QPRunViewController.h"
 
 @interface QPHomeViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, strong) UIButton *runButton;
 @property (nonatomic, strong) UIButton *joinButton;
+@property (nonatomic, strong) UIButton *rebotButton;
 @property (nonatomic, strong) QPRoomView *roomView;
 
 @end
@@ -57,12 +59,19 @@ static NSString * const kCollectionViewReuseId = @"QPMapViewCell";
     self.joinButton.centerY = self.runButton.centerY;
     self.joinButton.centerX = self.view.width / 4 * 3;
     self.joinButton.layer.cornerRadius = 25;
+    
+    [self.view addSubview:self.rebotButton];
+    self.rebotButton.size = CGSizeMake(50, 50);
+    self.rebotButton.centerY = self.runButton.centerY;
+    self.rebotButton.centerX = self.view.width / 4;
+    self.rebotButton.layer.cornerRadius = 25;
 }
 
 - (void)viewSafeAreaInsetsDidChange {
     [super viewSafeAreaInsetsDidChange];
     self.runButton.bottom = self.view.height - 15 - self.view.safeAreaInsets.bottom;
     self.joinButton.centerY = self.runButton.centerY;
+    self.rebotButton.centerY = self.runButton.centerY;
 }
 
 - (void)loadData {
@@ -132,6 +141,21 @@ static NSString * const kCollectionViewReuseId = @"QPMapViewCell";
     };
 }
 
+- (void)rebotButtonClick {
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"请选择人机难度" message:@"人机模式默认角色为小偷，且跑完全程才算有效成绩" preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"初级" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self presentViewController:[QPRunViewController new] animated:YES completion:nil];
+    }]];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"中级" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self presentViewController:[QPRunViewController new] animated:YES completion:nil];
+    }]];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"高级" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self presentViewController:[QPRunViewController new] animated:YES completion:nil];
+    }]];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:nil]];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 2;
 }
@@ -186,6 +210,17 @@ static NSString * const kCollectionViewReuseId = @"QPMapViewCell";
         [_joinButton addTarget:self action:@selector(joinButtonClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _joinButton;
+}
+
+- (UIButton *)rebotButton {
+    if (!_rebotButton) {
+        _rebotButton = [[UIButton alloc] init];
+        _rebotButton.backgroundColor = [UIColor orangeColor];
+        [_rebotButton setTitle:@"人机" forState:UIControlStateNormal];
+        [_rebotButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
+        [_rebotButton addTarget:self action:@selector(rebotButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _rebotButton;
 }
 
 @end

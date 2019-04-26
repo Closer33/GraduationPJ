@@ -27,6 +27,9 @@
 		04A50DF2226874880089A064 /* QPPedometerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A50DF1226874880089A064 /* QPPedometerManager.m */; };
 		04A50DF4226883650089A064 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A50DF3226883650089A064 /* CoreLocation.framework */; };
 		04B0A50B22719F2300E2F240 /* UIViewController+AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B0A50A22719F2300E2F240 /* UIViewController+AlertView.m */; };
+		04B215C52272E54400AD3D23 /* QPRunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B215C42272E54400AD3D23 /* QPRunViewController.m */; };
+		04B215C82272FEC400AD3D23 /* QPPausableMovingAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B215C72272FEC400AD3D23 /* QPPausableMovingAnnotation.m */; };
+		04B215CB2272FF0C00AD3D23 /* QPCustomMovingAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B215CA2272FF0C00AD3D23 /* QPCustomMovingAnnotation.m */; };
 		04E066DC2269CCB9003C6D10 /* QPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E066DB2269CCB9003C6D10 /* QPHomeViewController.m */; };
 		04E066E22269D508003C6D10 /* QPMapViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E066E12269D508003C6D10 /* QPMapViewCell.m */; };
 		04E066E62269DB40003C6D10 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E066E52269DB40003C6D10 /* UIView+Frame.m */; };
@@ -76,6 +79,12 @@
 		04A50DF3226883650089A064 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		04B0A50922719F2300E2F240 /* UIViewController+AlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AlertView.h"; sourceTree = "<group>"; };
 		04B0A50A22719F2300E2F240 /* UIViewController+AlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AlertView.m"; sourceTree = "<group>"; };
+		04B215C32272E54400AD3D23 /* QPRunViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QPRunViewController.h; sourceTree = "<group>"; };
+		04B215C42272E54400AD3D23 /* QPRunViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QPRunViewController.m; sourceTree = "<group>"; };
+		04B215C62272FEC400AD3D23 /* QPPausableMovingAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QPPausableMovingAnnotation.h; sourceTree = "<group>"; };
+		04B215C72272FEC400AD3D23 /* QPPausableMovingAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QPPausableMovingAnnotation.m; sourceTree = "<group>"; };
+		04B215C92272FF0C00AD3D23 /* QPCustomMovingAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QPCustomMovingAnnotation.h; sourceTree = "<group>"; };
+		04B215CA2272FF0C00AD3D23 /* QPCustomMovingAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QPCustomMovingAnnotation.m; sourceTree = "<group>"; };
 		04E066DA2269CCB9003C6D10 /* QPHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QPHomeViewController.h; sourceTree = "<group>"; };
 		04E066DB2269CCB9003C6D10 /* QPHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QPHomeViewController.m; sourceTree = "<group>"; };
 		04E066E02269D508003C6D10 /* QPMapViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QPMapViewCell.h; sourceTree = "<group>"; };
@@ -248,6 +257,8 @@
 			children = (
 				04E066DA2269CCB9003C6D10 /* QPHomeViewController.h */,
 				04E066DB2269CCB9003C6D10 /* QPHomeViewController.m */,
+				04B215C32272E54400AD3D23 /* QPRunViewController.h */,
+				04B215C42272E54400AD3D23 /* QPRunViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -263,6 +274,10 @@
 				046D5A8B226FFDD40096BB8E /* QPInputRoomIdView.h */,
 				046D5A8C226FFDD40096BB8E /* QPInputRoomIdView.m */,
 				046D5A902270004A0096BB8E /* MQVerViewInputView */,
+				04B215C62272FEC400AD3D23 /* QPPausableMovingAnnotation.h */,
+				04B215C72272FEC400AD3D23 /* QPPausableMovingAnnotation.m */,
+				04B215C92272FF0C00AD3D23 /* QPCustomMovingAnnotation.h */,
+				04B215CA2272FF0C00AD3D23 /* QPCustomMovingAnnotation.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -461,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30CF0F8D226205FB000EF837 /* main.m in Sources */,
+				04B215CB2272FF0C00AD3D23 /* QPCustomMovingAnnotation.m in Sources */,
 				04E066DC2269CCB9003C6D10 /* QPHomeViewController.m in Sources */,
 				040B069A226D9D100082BCD5 /* QPNetworkManager.m in Sources */,
 				04A50DC8226827ED0089A064 /* QPMainViewController.m in Sources */,
@@ -468,6 +484,7 @@
 				046D5A8D226FFDD40096BB8E /* QPInputRoomIdView.m in Sources */,
 				04B0A50B22719F2300E2F240 /* UIViewController+AlertView.m in Sources */,
 				04E066E62269DB40003C6D10 /* UIView+Frame.m in Sources */,
+				04B215C82272FEC400AD3D23 /* QPPausableMovingAnnotation.m in Sources */,
 				30D55A03226CB01F0070CE01 /* QPSocketManager.m in Sources */,
 				04A50DD222684F9E0089A064 /* QPAuthoritySettingViewController.m in Sources */,
 				3090BE4B226B1D0800A6B8FC /* QPMapViewCellModel.m in Sources */,
@@ -480,6 +497,7 @@
 				04A50DEB226859B30089A064 /* QPHealthKitManager.m in Sources */,
 				04A50DF2226874880089A064 /* QPPedometerManager.m in Sources */,
 				046D5A952270004A0096BB8E /* MQVerCodeInputView.m in Sources */,
+				04B215C52272E54400AD3D23 /* QPRunViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

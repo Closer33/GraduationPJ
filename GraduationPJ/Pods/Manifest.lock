@@ -17,6 +17,8 @@ PODS:
   - AMap3DMap (6.7.0):
     - AMapFoundation (~> 1.5)
   - AMapFoundation (1.5.4)
+  - AMapLocation (2.6.2):
+    - AMapFoundation (~> 1.4)
   - AMapSearch (6.1.1):
     - AMapFoundation (~> 1.4)
   - Masonry (1.1.0)
@@ -29,6 +31,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - AMap3DMap
+  - AMapLocation
   - AMapSearch
   - Masonry
   - MJExtension
@@ -39,12 +42,13 @@ SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   AMap3DMap: 7bb992e6bfb99e34e6c7a368958dde9d743a23f1
   AMapFoundation: bff8688722e886feda4edd77f1443746ddd7e2e2
+  AMapLocation: 89a7e4eb6040d32ba73c77a4966ecc66e46aa7c3
   AMapSearch: 3dcbf85c403a2a0fe0eda5318caabc272b31f5e1
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 54dbbf6ee728f1a88e9aad904353d007831c7847
   SDWebImage: 27dd2c9ea07a2252f94557c9fbb6105ee94b74c9
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
 
-PODFILE CHECKSUM: 4059a60b88bd446d64d52309a344c347f366c258
+PODFILE CHECKSUM: 5ea4b8a2335ec192140c4141c1e5f305255d9071
 
 COCOAPODS: 1.2.0

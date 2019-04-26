@@ -115,15 +115,15 @@
 - (MAMapView *)mapView {
     if (!_mapView) {
         _mapView = [[MAMapView alloc] initWithFrame:self.bounds];
-        _mapView.userInteractionEnabled = NO;
-        _mapView.showsCompass = NO;
-        _mapView.showsScale = NO;
+//        _mapView.userInteractionEnabled = NO;
+//        _mapView.showsCompass = NO;
+//        _mapView.showsScale = NO;
         _mapView.delegate = self;
-        for (id view in _mapView.subviews) {
-            if ([view class] == [UIImageView class]) {
-                [(UIImageView *)view removeFromSuperview];
-            }
-        }
+//        for (id view in _mapView.subviews) {
+//            if ([view class] == [UIImageView class]) {
+//                [(UIImageView *)view removeFromSuperview];
+//            }
+//        }
     }
     return _mapView;
 }
