@@ -10,6 +10,8 @@
 #import <MAMapKit/MAMapKit.h>
 #import "QPPausableMovingAnnotation.h"
 #import "QPCustomMovingAnnotation.h"
+#import "QPRunInfoView.h"
+#import "QPRunManager.h"
 
 static CLLocationCoordinate2D s_coords[] =
 {
@@ -113,6 +115,10 @@ static CLLocationCoordinate2D s_coords[] =
 @property (nonatomic, weak) MAAnnotationView *player1View;
 @property (nonatomic, weak) MAAnnotationView *player2View;
 
+@property (nonatomic, strong) NSMutableArray *mArray;
+
+@property (nonatomic, strong) QPRunInfoView *runInfoView;
+
 @end
 
 @implementation QPRunViewController
@@ -120,11 +126,7 @@ static CLLocationCoordinate2D s_coords[] =
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
-    self.mapView.delegate = self;
-    [self.view addSubview:self.mapView];
-    
-    [self initBtn];
+    [self setupUI];
     
     int count = sizeof(s_coords) / sizeof(s_coords[0]);
     double sum = 0;
@@ -138,6 +140,20 @@ static CLLocationCoordinate2D s_coords[] =
     }
     self.distanceArray = arr;
     self.sumDistance = sum;
+    
+}
+
+- (void)setupUI {
+    self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
+    self.mapView.delegate = self;
+    [self.view addSubview:self.mapView];
+    
+    [self initBtn];
+    
+    [self.view addSubview:self.runInfoView];
+    self.runInfoView.size = CGSizeMake(self.view.width - 20, 125);
+    self.runInfoView.x = 10;
+    self.runInfoView.bottom = self.view.height - 10;
 }
 
 - (void)initRoute {
@@ -162,7 +178,7 @@ static CLLocationCoordinate2D s_coords[] =
     
     self.player2 = [[QPCustomMovingAnnotation alloc] init];
     self.player2.title = @"player2";
-    [self.mapView addAnnotation:self.player2];
+//    [self.mapView addAnnotation:self.player2];
     
     [self.player1 setCoordinate:s_coords[0]];
     [self.player2 setCoordinate:s_coords[0]];
@@ -174,7 +190,6 @@ static CLLocationCoordinate2D s_coords[] =
     btn.backgroundColor = [UIColor grayColor];
     [btn setTitle:@"move" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(mov) forControlEvents:UIControlEventTouchUpInside];
-    
     [self.view addSubview:btn];
     
     UIButton * btn1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -182,31 +197,65 @@ static CLLocationCoordinate2D s_coords[] =
     btn1.backgroundColor = [UIColor grayColor];
     [btn1 setTitle:@"stop" forState:UIControlStateNormal];
     [btn1 addTarget:self action:@selector(stop) forControlEvents:UIControlEventTouchUpInside];
-    
     [self.view addSubview:btn1];
+    
+    UIButton * btn2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btn2.frame = CGRectMake(0, 300, 60, 40);
+    btn2.backgroundColor = [UIColor grayColor];
+    [btn2 setTitle:@"speed+" forState:UIControlStateNormal];
+    [btn2 addTarget:self action:@selector(speedPlus) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn2];
+    
+    UIButton * btn3 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btn3.frame = CGRectMake(0, 400, 60, 40);
+    btn3.backgroundColor = [UIColor grayColor];
+    [btn3 setTitle:@"speed-" forState:UIControlStateNormal];
+    [btn3 addTarget:self action:@selector(speedMinus) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn3];
 }
 
 - (void)mov {
     
-    double speed_car1 = 120.0 / 3.6; //80 km/h
-    int count = sizeof(s_coords) / sizeof(s_coords[0]);
-    [self.player1 setCoordinate:s_coords[0]];
-    [self.player1 addMoveAnimationWithKeyCoordinates:s_coords count:count withDuration:self.sumDistance / speed_car1 withName:nil completeCallback:^(BOOL isFinished) {
+    QPRunManager *manager = [[QPRunManager alloc] init];
+    [manager startRun];
+    
+//    double speed_car1 = 120.0 / 3.6; //80 km/h
+//    int count = sizeof(s_coords) / sizeof(s_coords[0]);
+//    [self.player1 setCoordinate:s_coords[0]];
+//    weakify(self);
+//    [self.player1 addMoveAnimationWithKeyCoordinates:&s_coords[0] count:count withDuration:self.sumDistance / speed_car1 withName:nil completeCallback:nil stepCallback:^(MAAnnotationMoveAnimation *currentAni) {
+//        strongify(self);
+//        [self.mapView setCenterCoordinate:self.player1.coordinate animated:YES];
+//    }];
+    
+    
+//    double speed_car2 = 100.0 / 3.6; //60 km/h
+//    __weak typeof(self) weakSelf = self;
+//    [self.player2 setCoordinate:s_coords[0]];
+//    self.passedTraceCoordIndex = 0;
+//    for(int i = 1; i < count; ++i) {
+//        NSNumber *num = [self.distanceArray objectAtIndex:i - 1];
+//        [self.player2 addMoveAnimationWithKeyCoordinates:&(s_coords[i]) count:1 withDuration:num.doubleValue / speed_car2 withName:nil completeCallback:^(BOOL isFinished) {
+//            weakSelf.passedTraceCoordIndex = i;
+//        }];
+//    }
+}
 
-    }];
+double speed = 120.0 / 3.6;
+int passedPointCount = 0;
+
+- (void)speedPlus {
+    speed *= 2;
     
+    MAAnnotationMoveAnimation *animation = [self.player1 allMoveAnimations].firstObject;
+    [animation cancel];
     
-    double speed_car2 = 100.0 / 3.6; //60 km/h
-    __weak typeof(self) weakSelf = self;
-    [self.player2 setCoordinate:s_coords[0]];
-    self.passedTraceCoordIndex = 0;
-    for(int i = 1; i < count; ++i) {
-        NSNumber *num = [self.distanceArray objectAtIndex:i - 1];
-        [self.player2 addMoveAnimationWithKeyCoordinates:&(s_coords[i]) count:1 withDuration:num.doubleValue / speed_car2 withName:nil completeCallback:^(BOOL isFinished) {
-            weakSelf.passedTraceCoordIndex = i;
-        }];
-    }
+    passedPointCount += animation.passedPointCount;
+    [_mArray insertObject:[NSValue valueWithMACoordinate:self.player1.coordinate] atIndex:passedPointCount];
     
+    int count = sizeof(s_coords) / sizeof(s_coords[0]);
+    s_coords[passedPointCount - 1] = self.player1.coordinate;
+    [self.player1 addMoveAnimationWithKeyCoordinates:&s_coords[passedPointCount - 1] count:count - passedPointCount - 1 withDuration:self.sumDistance / speed withName:nil completeCallback:nil];
 }
 
 - (void)stop {
@@ -304,6 +353,24 @@ static CLLocationCoordinate2D s_coords[] =
     }
     
     return nil;
+}
+
+- (NSMutableArray *)mArray {
+    if (!_mArray) {
+        _mArray = [NSMutableArray array];
+        int count = sizeof(s_coords) / sizeof(s_coords[0]);
+        for(int i = 0; i < count; ++i) {
+            [_mArray addObject:[NSValue valueWithMACoordinate:s_coords[i]]];
+        }
+    }
+    return _mArray;
+}
+
+- (QPRunInfoView *)runInfoView {
+    if (!_runInfoView) {
+        _runInfoView = [[NSBundle mainBundle]loadNibNamed:@"QPRunInfoView" owner:nil options:nil].firstObject;
+    }
+    return _runInfoView;
 }
 
 @end

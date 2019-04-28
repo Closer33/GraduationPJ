@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		040B069A226D9D100082BCD5 /* QPNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 040B0699226D9D100082BCD5 /* QPNetworkManager.m */; };
 		040C70EE22674F6A00613A33 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040C70ED22674F6A00613A33 /* SystemConfiguration.framework */; };
+		04207F302275D17000B4DF4E /* QPRunInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04207F2F2275D17000B4DF4E /* QPRunInfoView.m */; };
+		04207F322275D17E00B4DF4E /* QPRunInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04207F312275D17E00B4DF4E /* QPRunInfoView.xib */; };
 		043728B722699B6800892B38 /* QPAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 043728B622699B6800892B38 /* QPAccount.m */; };
+		0440DE812275AE9A009BD3BE /* QPRunManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0440DE802275AE9A009BD3BE /* QPRunManager.m */; };
 		0466B7D5226965C000094561 /* QPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0466B7D3226965C000094561 /* QPLoginViewController.m */; };
 		0466B7D6226965C000094561 /* QPLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0466B7D4226965C000094561 /* QPLoginViewController.xib */; };
 		046D5A8A226FFDB60096BB8E /* QPRoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D5A89226FFDB60096BB8E /* QPRoomView.m */; };
@@ -47,8 +50,13 @@
 		040B0698226D9D100082BCD5 /* QPNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QPNetworkManager.h; sourceTree = "<group>"; };
 		040B0699226D9D100082BCD5 /* QPNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QPNetworkManager.m; sourceTree = "<group>"; };
 		040C70ED22674F6A00613A33 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		04207F2E2275D17000B4DF4E /* QPRunInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QPRunInfoView.h; sourceTree = "<group>"; };
+		04207F2F2275D17000B4DF4E /* QPRunInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QPRunInfoView.m; sourceTree = "<group>"; };
+		04207F312275D17E00B4DF4E /* QPRunInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QPRunInfoView.xib; sourceTree = "<group>"; };
 		043728B522699B6800892B38 /* QPAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QPAccount.h; sourceTree = "<group>"; };
 		043728B622699B6800892B38 /* QPAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QPAccount.m; sourceTree = "<group>"; };
+		0440DE7F2275AE9A009BD3BE /* QPRunManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QPRunManager.h; sourceTree = "<group>"; };
+		0440DE802275AE9A009BD3BE /* QPRunManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QPRunManager.m; sourceTree = "<group>"; };
 		0466B7D2226965C000094561 /* QPLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QPLoginViewController.h; sourceTree = "<group>"; };
 		0466B7D3226965C000094561 /* QPLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QPLoginViewController.m; sourceTree = "<group>"; };
 		0466B7D4226965C000094561 /* QPLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QPLoginViewController.xib; sourceTree = "<group>"; };
@@ -222,6 +230,8 @@
 				30D55A02226CB01F0070CE01 /* QPSocketManager.m */,
 				040B0698226D9D100082BCD5 /* QPNetworkManager.h */,
 				040B0699226D9D100082BCD5 /* QPNetworkManager.m */,
+				0440DE7F2275AE9A009BD3BE /* QPRunManager.h */,
+				0440DE802275AE9A009BD3BE /* QPRunManager.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -278,6 +288,9 @@
 				04B215C72272FEC400AD3D23 /* QPPausableMovingAnnotation.m */,
 				04B215C92272FF0C00AD3D23 /* QPCustomMovingAnnotation.h */,
 				04B215CA2272FF0C00AD3D23 /* QPCustomMovingAnnotation.m */,
+				04207F2E2275D17000B4DF4E /* QPRunInfoView.h */,
+				04207F2F2275D17000B4DF4E /* QPRunInfoView.m */,
+				04207F312275D17E00B4DF4E /* QPRunInfoView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -381,6 +394,9 @@
 					30CF0F79226205F9000EF837 = {
 						CreatedOnToolsVersion = 9.4.1;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.HealthKit = {
 								enabled = 0;
 							};
@@ -412,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30CF0F8A226205FB000EF837 /* LaunchScreen.storyboard in Resources */,
+				04207F322275D17E00B4DF4E /* QPRunInfoView.xib in Resources */,
 				3090BE4D226B22A700A6B8FC /* track.plist in Resources */,
 				046D5A98227012F70096BB8E /* QPRoomView.xib in Resources */,
 				30CF0F87226205FB000EF837 /* Assets.xcassets in Resources */,
@@ -477,6 +494,7 @@
 			files = (
 				30CF0F8D226205FB000EF837 /* main.m in Sources */,
 				04B215CB2272FF0C00AD3D23 /* QPCustomMovingAnnotation.m in Sources */,
+				0440DE812275AE9A009BD3BE /* QPRunManager.m in Sources */,
 				04E066DC2269CCB9003C6D10 /* QPHomeViewController.m in Sources */,
 				040B069A226D9D100082BCD5 /* QPNetworkManager.m in Sources */,
 				04A50DC8226827ED0089A064 /* QPMainViewController.m in Sources */,
@@ -493,6 +511,7 @@
 				043728B722699B6800892B38 /* QPAccount.m in Sources */,
 				04E066E22269D508003C6D10 /* QPMapViewCell.m in Sources */,
 				046D5A9B227042620096BB8E /* QPRoomModel.m in Sources */,
+				04207F302275D17000B4DF4E /* QPRunInfoView.m in Sources */,
 				30CF0F7F226205F9000EF837 /* AppDelegate.m in Sources */,
 				04A50DEB226859B30089A064 /* QPHealthKitManager.m in Sources */,
 				04A50DF2226874880089A064 /* QPPedometerManager.m in Sources */,
