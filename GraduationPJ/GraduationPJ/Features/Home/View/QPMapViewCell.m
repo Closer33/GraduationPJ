@@ -115,7 +115,7 @@
 - (MAMapView *)mapView {
     if (!_mapView) {
         _mapView = [[MAMapView alloc] initWithFrame:self.bounds];
-//        _mapView.userInteractionEnabled = NO;
+        _mapView.userInteractionEnabled = NO;
 //        _mapView.showsCompass = NO;
 //        _mapView.showsScale = NO;
         _mapView.delegate = self;

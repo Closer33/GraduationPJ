@@ -118,6 +118,7 @@ static CLLocationCoordinate2D s_coords[] =
 @property (nonatomic, strong) NSMutableArray *mArray;
 
 @property (nonatomic, strong) QPRunInfoView *runInfoView;
+@property (nonatomic, strong) QPRunManager *runManager;
 
 @end
 
@@ -216,8 +217,13 @@ static CLLocationCoordinate2D s_coords[] =
 
 - (void)mov {
     
-    QPRunManager *manager = [[QPRunManager alloc] init];
-    [manager startRun];
+    self.runManager = [[QPRunManager alloc] init];
+    [self.runManager startRun];
+    weakify(self)
+    self.runManager.timeBlock = ^(NSString *timeStr) {
+        strongify(self)
+        [self.runInfoView setTimeStr:timeStr];
+    };
     
 //    double speed_car1 = 120.0 / 3.6; //80 km/h
 //    int count = sizeof(s_coords) / sizeof(s_coords[0]);
@@ -258,18 +264,24 @@ int passedPointCount = 0;
     [self.player1 addMoveAnimationWithKeyCoordinates:&s_coords[passedPointCount - 1] count:count - passedPointCount - 1 withDuration:self.sumDistance / speed withName:nil completeCallback:nil];
 }
 
+- (void)speedMinus {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)stop {
-    for(MAAnnotationMoveAnimation *animation in [self.player1 allMoveAnimations]) {
-        [animation cancel];
-    }
-    self.player1.movingDirection = 0;
-    [self.player1 setCoordinate:s_coords[0]];
     
-    for(MAAnnotationMoveAnimation *animation in [self.player2 allMoveAnimations]) {
-        [animation cancel];
-    }
-    self.player2.movingDirection = 0;
-    [self.player2 setCoordinate:s_coords[0]];
+    [self.runManager endRun];
+//    for(MAAnnotationMoveAnimation *animation in [self.player1 allMoveAnimations]) {
+//        [animation cancel];
+//    }
+//    self.player1.movingDirection = 0;
+//    [self.player1 setCoordinate:s_coords[0]];
+//
+//    for(MAAnnotationMoveAnimation *animation in [self.player2 allMoveAnimations]) {
+//        [animation cancel];
+//    }
+//    self.player2.movingDirection = 0;
+//    [self.player2 setCoordinate:s_coords[0]];
 }
 
 

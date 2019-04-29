@@ -43,6 +43,8 @@ static NSString * const kCollectionViewReuseId = @"QPMapViewCell";
 }
 
 - (void)setupUI {
+    [self setupNavgationBar];
+    
     [self.view addSubview:self.collectionView];
     self.collectionView.size = CGSizeMake(self.view.width, self.view.width * 1.2);
     self.collectionView.x = 0;
@@ -65,6 +67,14 @@ static NSString * const kCollectionViewReuseId = @"QPMapViewCell";
     self.rebotButton.centerY = self.runButton.centerY;
     self.rebotButton.centerX = self.view.width / 4;
     self.rebotButton.layer.cornerRadius = 25;
+}
+
+- (void)setupNavgationBar {
+    UIBarButtonItem *settingItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleDone target:self action:@selector(settingItemClick)];
+    UIBarButtonItem *historyItem = [[UIBarButtonItem alloc] initWithTitle:@"历史" style:UIBarButtonItemStyleDone target:self action:@selector(historyItemClick)];
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:settingItem, historyItem, nil];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"社区" style:UIBarButtonItemStyleDone target:self action:@selector(xommunityItemClick)];
 }
 
 - (void)viewSafeAreaInsetsDidChange {
@@ -157,7 +167,7 @@ static NSString * const kCollectionViewReuseId = @"QPMapViewCell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -180,8 +190,36 @@ static NSString * const kCollectionViewReuseId = @"QPMapViewCell";
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
+        _collectionView.contentInset = UIEdgeInsetsMake(0, 20, 0, 20);
     }
     return _collectionView;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
+}
+
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+//    CGFloat contentOffsetX = scrollView.contentOffset.x + 20;
+//    CGFloat halfItemWidth = (self.view.width - 40) / 2 + 5;
+//    NSInteger index = (contentOffsetX + halfItemWidth) / halfItemWidth / 2;
+//    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+//}
+//
+
+// 减速动画开始前被调用
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+//    CGFloat contentOffsetX = scrollView.contentOffset.x + 20;
+//    CGFloat halfItemWidth = (self.view.width - 40) / 2 + 5;
+//    NSInteger index = (contentOffsetX + halfItemWidth) / halfItemWidth / 2;
+//    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    CGFloat contentOffsetX = scrollView.contentOffset.x + 20;
+    CGFloat halfItemWidth = (self.view.width - 40) / 2 + 5;
+    NSInteger index = (contentOffsetX + halfItemWidth) / halfItemWidth / 2;
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
 }
 
 - (NSMutableArray *)dataArr {

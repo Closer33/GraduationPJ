@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QPRunInfoView : UIView
 
+- (void)setTimeStr:(NSString *)timeStr;
+
 @end
 
 NS_ASSUME_NONNULL_END

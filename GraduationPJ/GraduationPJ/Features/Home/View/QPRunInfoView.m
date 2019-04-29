@@ -27,4 +27,8 @@
     self.layer.cornerRadius = 10;
 }
 
+- (void)setTimeStr:(NSString *)timeStr {
+    self.timeLabel.text = timeStr;
+}
+
 @end
